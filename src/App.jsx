@@ -37,7 +37,7 @@ function App() {
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#documentation-icon"></use>
           </svg>
-          <h2>Documentation</h2>
+          <h2>Home</h2>
           <p>Your questions, answered</p>
           <ul>
             <li>
@@ -58,7 +58,7 @@ function App() {
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#social-icon"></use>
           </svg>
-          <h2>Connect with us</h2>
+          <h2>Contactos</h2>
           <p>Join the Vite community</p>
           <ul>
             <li>
