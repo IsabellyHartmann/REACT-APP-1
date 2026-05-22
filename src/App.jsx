@@ -4,6 +4,9 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
+import Mensagem from './Mensagem.jsx'
+import Alerta from './Alerta.jsx'
+
 // Um componente React é uma função que devolve JSX (JavaScript + HTML)
 function App() {
   return (
@@ -19,6 +22,12 @@ function App() {
       >
         Clica-me!
       </button>
+      <h1 className="text-center">Componentes e Props</h1>
+      {/* Cada componente recebe props diferentes */}
+      <Mensagem texto="Bem-vindo à tua primeira aplicação React!" />
+      <Mensagem texto="Os componentes permitem reutilizar código!" />
+      <Alerta tipo="success" mensagem="Esta é uma mensagem de sucesso!" />
+      <Alerta tipo="warning" mensagem="Esta é uma mensagem de aviso!" />
     </div>
   );
 }

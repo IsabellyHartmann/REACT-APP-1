@@ -9,6 +9,8 @@ import App from './App.jsx'
 //import Header from './Header.jsx'
 //import Footer from './Footer.jsx'
 
+
+// O método createRoot é usado para criar a raiz da aplicação React
 createRoot(document.getElementById('roota')).render(
   <StrictMode>
     <App></App>
