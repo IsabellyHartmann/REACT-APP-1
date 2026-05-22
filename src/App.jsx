@@ -6,8 +6,8 @@ import './App.css'
 
 import Mensagem from './Mensagem.jsx'
 import Alerta from './Alerta.jsx'
+import Formulario from './Formulario.jsx'
 
-// Um componente React é uma função que devolve JSX (JavaScript + HTML)
 function App() {
   return (
     <div className="container mt-4">
@@ -18,18 +18,25 @@ function App() {
       {/* Evento onClick em React usa camelCase e chama uma função */}
       <button
         className="btn btn-success d-block mx-auto"
-        onClick={() => alert('Olá, mundo!')}
+        onClick={() => alert('Olá, Rodrigo!')}
       >
         Clica-me!
       </button>
-      <h1 className="text-center">Componentes e Props</h1>
-      {/* Cada componente recebe props diferentes */}
-      <Mensagem texto="Bem-vindo à tua primeira aplicação React!" />
-      <Mensagem texto="Os componentes permitem reutilizar código!" />
-      <Alerta tipo="success" mensagem="Esta é uma mensagem de sucesso!" />
-      <Alerta tipo="warning" mensagem="Esta é uma mensagem de aviso!" />
+
+
+      <h1 className='text-center'>Componentes e Props</h1>
+
+      <Mensagem mytext="Bem vindo à tua primeira aplicação React!" />
+      <Mensagem mytext="Os componentes permitem reutilizar código!" />
+
+      <Alerta tipo="success" texto="O meu novo alerta(success)" />
+      <Alerta tipo="danger" texto="O meu novo alerta(danger)" />
+      <Alerta tipo="warning" texto="O meu novo alerta(warning)" />
+
+      <Formulario />
+      <Tarefas />
+
     </div>
   );
 }
-
-export default App
+export default App;
