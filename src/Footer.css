@@ -7,7 +7,7 @@
 
 /*Para as duas referencias*/
 .footer-center a {
-  color: rgb(97, 11, 88);
+  color: #fc0;
   text-decoration: none;
   padding: 10px;
 }
@@ -15,5 +15,6 @@
 /*Quando passar por cima das palavras*/
 .footer-center a:hover {
   color: #000;
+  /*text-decoration:underline;*/
   font-weight: Bold;
 }

@@ -7,9 +7,9 @@ function Header() {
             <logo><img src={heroImg} alt="Hero Vite" /></logo>
             <nav>
                 <a href="/home">HOME</a>
-                <a href="/contactos">CONTACTOS</a>
+                <a href="/contatos">CONTACTOS</a>
             </nav>
-            <div className='clear'></div> 
+            <div className="clear"></div>
         </div>
     )
 }

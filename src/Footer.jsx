@@ -2,12 +2,10 @@
 import './Footer.css'
 
 function Footer() {
-    return (
-        <div className='footer-center'>
-            <a href='/home'>HOME</a>
-            <a href='/contactos'>CONTACTOS</a>
-        </div>
-    )
+    <div className="footer">
+        <a href="/home">Home </a>
+        <a href="/contatos">Contatos </a>
+    </div>
 }
 
 export default Footer

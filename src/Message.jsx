@@ -1,9 +1,10 @@
-function Message() {
-    return (
-        <div>
-            A minha logo
-           </div>
-    )
+
+function Message(props) {
+    return(
+        <div className="alert alert-primary" role="alert">
+            {props.mytext}
+        </div>
+    );
 }
 
-export default Message
+export default Message;
