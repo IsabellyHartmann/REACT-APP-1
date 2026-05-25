@@ -9,6 +9,7 @@ import Alerta from './Alerta';
 import Contador from './Contador';
 import Formulario from './Formulario';
 import Tarefas from './Tarefas';
+import Notas from './Notas';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       {/* Evento onClick em React usa camelCase e chama uma função */}
       <button
         className="btn btn-success d-block mx-auto"
-        onClick={() => alert('Olá, Luis`inho')}
+        onClick={() => alert('Olá, Isabelly!')}
       >
         Clica-me!
       </button>
@@ -39,7 +40,9 @@ function App() {
       <Tarefas />
 
     </div>
+
   );
 }
 
 export default App
+

@@ -25,26 +25,29 @@ function Tarefas() {
             titulo: formData.titulo,
             data: formData.data,
             descricao: formData.descricao
-        };        
-        setTarefas([...tarefas, novaTarefa]);      
+        };
+        setTarefas([...tarefas, novaTarefa]);
     }
 
     function newTarefa() {
         const novaTarefa = {
             id: Date.now(),
-            titulo: 'Euzinho',
-            data: 'euzinha',
-            descricao: 'ui ui ui'
-        };  
+            titulo: 'Nome',
+            data: '00/00/0000',
+            descricao: '...'
+        };
         setFormData(novaTarefa);
         setTarefas([...tarefas, novaTarefa]);
         setDadosSubmetidos(null);
-    }    
+    }
 
     // Limpa o formulário e os dados apresentados
     function limparFormulario() {
         setFormData({ id: '', titulo: '', data: '', descricao: '' });
         setDadosSubmetidos(null);
+    }
+    function limparTarefas() {
+        setTarefas([]);
     }
 
 
@@ -81,7 +84,11 @@ function Tarefas() {
                         onClick={limparFormulario}>Limpar</button>
 
                     <button type="button" className="btn btn-outline-secondary"
-                        onClick={newTarefa}>Nova Tarefa</button>                        
+                        onClick={newTarefa}>Nova Tarefa</button>
+
+                    <button type="button" className="btn btn-danger float-right"
+                        onClick={limparTarefas}>Limpar Tarefas</button>
+
                 </form>
             </div>
 
