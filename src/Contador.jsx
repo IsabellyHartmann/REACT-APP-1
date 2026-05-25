@@ -6,11 +6,11 @@ function Contador() {
     function aumentar() {
         setContagem(contagem + 1);
     }
+    function aumentar10() {
+        setContagem(contagem + 10);
+    }
     function diminuir() {
         if (contagem > 0) setContagem(contagem - 1);
-    }
-    function mais10() {
-        setContagem(contagem + 10);
     }
     function reiniciar() {
         setContagem(0);
@@ -22,11 +22,11 @@ function Contador() {
             <button className="btn btn-primary mr-2" onClick={aumentar}>
                 +
             </button>
+            <button className="btn btn-info mr-2" onClick={aumentar10}>
+                +10
+            </button>
             <button className="btn btn-secondary mr-2" onClick={diminuir}>
                 -
-            </button>
-            <button className="btn btn-warning mr-2" onClick={mais10}>
-                +10
             </button>
             <button className="btn btn-danger" onClick={reiniciar}>
                 Reset

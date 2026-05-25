@@ -1,32 +1,9 @@
-/*  */
-logo {
-    float: left;
-    width: 30%;
-    text-align: left;
-}
+logo {   float:left;   width:30%;   text-align:left; }
 
-/* Para a imagem do logo */
-logo img {
-    width: 100%;
-    max-width: 150px;
-}
+logo img{ width:100%;   max-width:150px; }
 
-/* Para a nav mandar as palavras para a direita */
-nav {
-    float: right;
-    width: 65%;
-    text-align: right;
-}
+nav {   float:right;   width:65%;   text-align: right; }
 
-/* Para as duas referências "a" */
-.nav a {
-    color: rgb(82, 66, 0);
-    text-decoration: none;
-    padding: 10px;
-}
+nav a {   color: #fc0;   text-decoration:none;   padding:10px; }
 
-/* Quando passar por cima das palavras */
-.nav a:hover {
-    color: #000;
-    font-weight: Bold;
-}
+nav a:hover {   color: #000;   font-weight:Bold; }

@@ -3,16 +3,15 @@ import heroImg from './assets/hero.png'
 
 function Header() {
     return (
-        <div>
+       <div>
             <logo><img src={heroImg} alt="Hero Vite" /></logo>
             <nav>
                 <a href="/home">HOME</a>
-                <a href="/contatos">CONTACTOS</a>
+                <a href="/contactos">CONTACTOS</a>
             </nav>
             <div className="clear"></div>
-        </div>
+       </div> 
     )
 }
 
 export default Header
-//clear= limpa minha área

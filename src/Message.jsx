@@ -1,10 +1,10 @@
 
-function Message(props) {
-    return(
-        <div className="alert alert-primary" role="alert">
-            {props.mytext}
-        </div>
-    );
+function Message() {
+    return (
+       <div>
+            a minha mensagem
+       </div> 
+    )
 }
 
-export default Message;
+export default Message

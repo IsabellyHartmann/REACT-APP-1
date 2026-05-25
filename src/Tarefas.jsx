@@ -1,20 +1,46 @@
 import React, { useState } from 'react';
-function tarefas() {
-    // Estado único "formData" guarda todos os campos do formulário num objeto
+
+function Tarefas() {
+
     const [formData, setFormData] = useState({
         id: '',
         titulo: '',
         data: '',
         descricao: ''
     });
-    const [Tarefas, setTarefas] = useState([]);
 
+    const [tarefas, setTarefas] = useState([]);
+
+    // Guarda os dados submetidos (para mostrar depois do envio)
     const [dadosSubmetidos, setDadosSubmetidos] = useState(null);
+
     // Esta função é chamada quando o formulário é submetido
     function handleSubmit(e) {
         e.preventDefault(); // impede o recarregamento da página
         setDadosSubmetidos(formData); // guarda os dados preenchidos
+
+
+        const novaTarefa = {
+            id: Date.now(),
+            titulo: formData.titulo,
+            data: formData.data,
+            descricao: formData.descricao
+        };        
+        setTarefas([...tarefas, novaTarefa]);      
     }
+
+    function newTarefa() {
+        const novaTarefa = {
+            id: Date.now(),
+            titulo: 'Euzinho',
+            data: 'euzinha',
+            descricao: 'ui ui ui'
+        };  
+        setFormData(novaTarefa);
+        setTarefas([...tarefas, novaTarefa]);
+        setDadosSubmetidos(null);
+    }    
+
     // Limpa o formulário e os dados apresentados
     function limparFormulario() {
         setFormData({ id: '', titulo: '', data: '', descricao: '' });
@@ -22,44 +48,52 @@ function tarefas() {
     }
 
 
+
     return (
-        <div className="mt-6 row">
-            <form onSubmit={handleSubmit}>
-                {/* Cada campo é controlado — o valor vem do estado React */}
-                <div className="form-group">
-                    <label>Titulo</label>
-                    <input type="text" className="form-control" value={formData.titulo} onChange={(e) =>
+        <div className="mt-4 row">
 
-                        setFormData({ ...formData, titulo: e.target.value })} required />
-                </div>
-                <div className="form-group">
-                    <label>Data</label>
-                    <input type="date" className="form-control" value={formData.data} onChange={(e) =>
 
-                        setFormData({ ...formData, data: e.target.value })} />
-                </div>
-                <div className="form-group">
-                    <label>Descrição</label>
-                    <textarea className="form-control" rows="3" value={formData.descricao} onChange={(e) =>
 
-                        setFormData({ ...formData, descricao: e.target.value })}></textarea>
-                </div>
-                {/* setTarefas([...Tarefas, { ...formData, id: novoId }]); */}
+            <div className="col-6">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Titulo</label>
+                        <input type="text" className="form-control" value={formData.titulo} onChange={(e) =>
+                            setFormData({ ...formData, titulo: e.target.value })} required />
+                    </div>
 
-                {/* Botões de ação */}
-                <button className="btn btn-success mr-2">Enviar</button>
+                    <div className="form-group">
+                        <label>Data</label>
+                        <input type="date" className="form-control" value={formData.data} onChange={(e) =>
+                            setFormData({ ...formData, data: e.target.value })} required />
+                    </div>
 
-                <button type="button" className="btn btn-outline-secondary"
+                    <div className="form-group">
+                        <label>Descrição</label>
+                        <input type="text" className="form-control" value={formData.descricao} onChange={(e) =>
+                            setFormData({ ...formData, descricao: e.target.value })} />
+                    </div>
 
-                    onClick={limparFormulario}>Limpar</button>
-            </form>
+                    {/* Botões de ação */}
+                    <button className="btn btn-success mr-2">Enviar</button>
+
+                    <button type="button" className="btn btn-outline-secondary"
+                        onClick={limparFormulario}>Limpar</button>
+
+                    <button type="button" className="btn btn-outline-secondary"
+                        onClick={newTarefa}>Nova Tarefa</button>                        
+                </form>
+            </div>
+
+
+
+
 
             <div className="col-6">
                 {dadosSubmetidos && (
                     <div className="card mt-4">
                         <div className="card-body">
                             <h5 className="card-title">Dados Recebidos</h5>
-                            <p><strong>id:</strong> {dadosSubmetidos.id}</p>
                             <p><strong>Titulo:</strong> {dadosSubmetidos.titulo}</p>
                             <p><strong>Data:</strong> {dadosSubmetidos.data}</p>
                             <p><strong>Descrição:</strong> {dadosSubmetidos.descricao}</p>
@@ -67,13 +101,22 @@ function tarefas() {
                     </div>
                 )}
 
+                <ul className="list-group mt-4">
+                    {tarefas.map(tarefa => (
+                        <li key={tarefa.id} className="list-group-item">
+                            <h5>{tarefa.titulo}</h5>
+                            <p>{tarefa.data}</p>
+                            <p>{tarefa.descricao}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
 
-            <div className="col-4">
-            </div>
+
+
 
         </div>
     );
-
 }
-export default tarefas;
+
+export default Tarefas;
