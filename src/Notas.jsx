@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function Notas() {
-    
+    // Estado para armazenar os dados do formulário
     const [formData, setFormData] = useState({
             nomeAluno: '',
             disciplina: '',
@@ -76,6 +76,17 @@ function Notas() {
                 </div>
 
             </form>
+
+            <div className="col-12 mt-4">
+                <button className="btn btn-primary d-block mx-left">Calcular Nota Final</button>
+              
+            </div>
+
+            <div className="col-12 mt-4">
+                <button className="btn btn-primary d-block mx-left">Limpar</button>
+            </div>
+
+            
         </div>
     );
 }

@@ -29,7 +29,7 @@ function App() {
       {/* Evento onClick em React usa camelCase e chama uma função */}
       {/*<button
         className="btn btn-success d-block mx-auto"
-        onClick={() => alert('Olá, TIKITI!')}
+        onClick={() => alert('Olá, Isabelly!')}
       >
         Clica-me!
       </button>
