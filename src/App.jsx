@@ -13,12 +13,13 @@ import Notas from './Notas';
 
 function App() {
   return (
-    <div className="container mt-4">
+   <div className="container mt-4">
+      {/* 
       <h1 className="text-center text-primary">Olá React!</h1>
       <p className="lead text-center">
         Este é o teu primeiro componente React.
       </p>
-      {/* Evento onClick em React usa camelCase e chama uma função */}
+       Evento onClick em React usa camelCase e chama uma função 
       <button
         className="btn btn-success d-block mx-auto"
         onClick={() => alert('Olá, Isabelly!')}
@@ -29,7 +30,7 @@ function App() {
       <Contador />
 
       <h1 className="text-center">Componentes e Props</h1>
-      {/* Cada componente recebe props diferentes */}
+       Cada componente recebe props diferentes 
       <Mensagem mytext="Bem-vindo à tua primeira aplicação React!" />
       <Mensagem mytext="Os componentes permitem reutilizar código!" />
 
@@ -38,8 +39,11 @@ function App() {
       <Alerta tipo="danger" texto="O meu novo alerta!" />
 
       <Tarefas />
-
+      */}
+      <Notas/>
     </div>
+
+    
 
   );
 }
