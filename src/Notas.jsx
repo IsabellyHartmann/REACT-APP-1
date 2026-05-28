@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Alerta from './Alerta';
 
 function Notas() {
     // Estado para armazenar os dados do formulário
@@ -8,12 +9,11 @@ function Notas() {
         notaTestes: '',
         notaTrabalhos: '',
         notaAtitudes: '',
-
         percTestes: '',
         percTrabalhos: '',
         percAtitudes: '',
-
     });
+
     // Estado para armazenar os dados submetidos
     const [dadosSubmetidos, setDadosSubmetidos] = useState(null);
 
@@ -26,35 +26,79 @@ function Notas() {
         const media = (formData.notaTestes + formData.notaTrabalhos + formData.notaAtitudes) / 3;
         return media >= 9.5 ? 'Aprovado' : 'Reprovado';
     };
-    // Função para limpar o formulário
+
     const limparFormulario = () => {
-        setFormData({ nomeAluno: '', disciplina: '', notaTestes: '', percTrabalhos: '', percAtitudes: '' });
-         setDadosSubmetidos(null);
-    }
-    // Função para lidar com o envio do formulário
-    const handleSubmit = (e) => {
-        e.preventDefault(); // impede o recarregamento da página
-        //setDadosSubmetidos(formData); // guarda os dados preenchidos
-    }
+        setFormData({
+            nomeAluno: '',
+            disciplina: '',
+            notaTestes: '',
+            notaTrabalhos: '',
+            notaAtitudes: '',
+            percTestes: '',
+            percTrabalhos: '',
+            percAtitudes: '',
+        });
+        setDadosSubmetidos(null);
+    };
 
-  
-    
+    const validarFormulario = () => {
+        const notaTestes = parseFloat(formData.notaTestes);
+        const notaTrabalhos = parseFloat(formData.notaTrabalhos);
+        const notaAtitudes = parseFloat(formData.notaAtitudes);
+        const percTestes = parseFloat(formData.percTestes);
+        const percTrabalhos = parseFloat(formData.percTrabalhos);
+        const percAtitudes = parseFloat(formData.percAtitudes);
 
-   /* function mostrarDados() {
-        if(parseFloat(formData.notaTestes) > 20 || parseFloat(formData.notaTrabalhos) > 20 || parseFloat(formData.notaAtitudes) > 20) {
+        if (
+            [notaTestes, notaTrabalhos, notaAtitudes, percTestes, percTrabalhos, percAtitudes]
+                .some(value => Number.isNaN(value))
+        ) {
+            alert('Por favor, preencha todos os campos numéricos.');
+            return false;
+        }
+
+        if (
+            notaTestes < 0 || notaTestes > 20 ||
+            notaTrabalhos < 0 || notaTrabalhos > 20 ||
+            notaAtitudes < 0 || notaAtitudes > 20
+        ) {
             alert('As notas devem ser entre 0 e 20.');
-            return;
-        }else if(parseFloat(formData.percTestes) > 100 || parseFloat(formData.percTrabalhos) > 100 || parseFloat(formData.percAtitudes) > 100) {
+            return false;
+        }
+
+        if (
+            percTestes < 0 || percTestes > 100 ||
+            percTrabalhos < 0 || percTrabalhos > 100 ||
+            percAtitudes < 0 || percAtitudes > 100
+        ) {
             alert('As percentagens devem ser entre 0 e 100.');
-            return;
-        }else if(parseFloat(formData.percTestes) + parseFloat(formData.percTrabalhos) + parseFloat(formData.percAtitudes) !== 100) {
+            return false;
+        }
+
+        if (percTestes + percTrabalhos + percAtitudes !== 100) {
             alert('A soma das percentagens deve ser igual a 100%.');
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleCalcular = () => {
+        if (!validarFormulario()) {
             return;
-        }   else {
-            setDadosSubmetidos(formData);
-        }*/
+        }
 
+        setDadosSubmetidos({
+            ...formData,
+            notaFinal: notasFinais().toFixed(2),
+            situacao: mediaNotas(),
+        });
+    };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleCalcular();
+    };
 
     return (
         <div className="mt-4 row">
@@ -120,22 +164,24 @@ function Notas() {
                             setFormData({ ...formData, percAtitudes: e.target.value })} required />
                     </div>
                 </div>
-
+                <div className="col-12 mt-4 d-flex gap-3">
+                    <button type="button" onClick={handleCalcular} className="btn btn-primary">Calcular</button>
+                    <button type="button" onClick={limparFormulario} className="btn btn-danger">Limpar</button>
+                </div>
+                <div className="col-12 mt-2">Por favor, preencha os campos e clique em calcular</div>
             </form>
 
-            <div className="col-12 mt-4">
-                <button onclick={notasFinais} className="btn btn-primary d-block mx-left">Calcular Nota Final</button>
-
-            </div>
-
-            <div className="col-12 mt-4">
-                <button onclick={limparFormulario} className="btn btn-secondary d-block mx-left">Limpar Formulário</button>
-            </div>
-
-
+            {dadosSubmetidos && (
+                <div className="col-12 mt-4">
+                    <h3>Resultado</h3>
+                    <p>Aluno: {dadosSubmetidos.nomeAluno}</p>
+                    <p>Disciplina: {dadosSubmetidos.disciplina}</p>
+                    <p>Nota Final: {dadosSubmetidos.notaFinal}</p>
+                    <p>Situação: {dadosSubmetidos.situacao}</p>
+                </div>
+            )}
         </div>
     );
 }
-
 
 export default Notas;
